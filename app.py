@@ -19,10 +19,12 @@ def get_score_from_player():
     return s
 
 def save_score(player_name, score):
-    scoreboard = []
-    with open("scoreboard.json", "r") as f:
-        scoreboard = json.load(f)
-
+    try:
+        with open("scoreboard.json", "r") as f:
+            scoreboard = json.load(f)
+    except:
+        scoreboard = []
+    
     obj = {
         'name': player_name,
         'score': int(score)
