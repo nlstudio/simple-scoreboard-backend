@@ -30,6 +30,7 @@ def save_score(player_name, score):
         'score': int(score)
     }
     scoreboard.append(obj)
+    scoreboard = [dict(i) for i in set([tuple(o.items()) for o in scoreboard])]
     scoreboard = sorted(scoreboard, key =lambda a:(a.__getitem__('score'),a.__getitem__('name')), reverse=True)
     scoreboard = scoreboard[:10]
 
