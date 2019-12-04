@@ -40,7 +40,16 @@ def save_score(player_name, score):
 # 玩家获取排行榜
 @app.route("/score")
 def player_get_scoreboard():
-    pass
+    try:
+        with open("scoreboard.json", "r") as f:
+            scoreboard = json.load(f)
+    except:
+        scoreboard = []
+
+    s = str()
+    for item in scoreboard:
+        s += '{},{}\n'.format(item['name'], item['score'])
+    return s
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug=True)
