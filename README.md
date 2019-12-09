@@ -16,7 +16,9 @@
 
     jonb,30\njob,30\njonb,20
 
+### 手动清空排行榜
 
+    浏览器访问：http://127.0.0.1:5000/reset?token=PLEASE-CHANGE-ME
 
 ## 谁在使用
 
