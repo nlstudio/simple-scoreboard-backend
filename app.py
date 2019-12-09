@@ -57,9 +57,13 @@ def player_get_scoreboard():
 
 @app.route("/reset")
 def clear_scoreboard():
-    with open("scoreboard.json", "w") as f:
-        f.truncate()
-        return "Success"
+    token = request.args.get("token")
+    if token == reset_token:
+        with open("scoreboard.json", "w") as f:
+            f.truncate()
+            return "Success"
+    else:
+        return "Failed"
 
 if __name__ == '__main__':
     app.run(host=server_ip, port=server_port, debug=True)
