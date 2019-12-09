@@ -2,6 +2,8 @@ import os
 from flask import Flask, request
 import json
 
+server_ip = "localhost"
+server_port = 5000
 top_n = 3
 app = Flask(__name__)
 
@@ -53,4 +55,4 @@ def player_get_scoreboard():
     return s
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=5000, debug=True)
+    app.run(host=server_ip, port=server_port, debug=True)
