@@ -5,6 +5,7 @@ import json
 server_ip = "localhost"
 server_port = 5000
 top_n = 3
+reset_token = "PLEASE-CHANGE-ME"
 app = Flask(__name__)
 
 @app.route("/")
@@ -53,6 +54,12 @@ def player_get_scoreboard():
     for item in scoreboard:
         s += '{},{}\n'.format(item['name'], item['score'])
     return s
+
+@app.route("/reset")
+def clear_scoreboard():
+    with open("scoreboard.json", "w") as f:
+        f.truncate()
+        return "Success"
 
 if __name__ == '__main__':
     app.run(host=server_ip, port=server_port, debug=True)
