@@ -30,7 +30,7 @@ def save_score(player_name, score):
         scoreboard = []
     
     obj = {
-        'name': player_name,
+        'name': "".join([i if ord(i) < 128 else "" for i in player_name]),
         'score': int(score)
     }
     scoreboard.append(obj)
